@@ -1,4 +1,4 @@
-my publicly available discord bots 👍
+publicly available discord bots by a niconicosette
 
 
-alice >> https://niconicosette.github.io/discobots/alice-twitter
+alice twitter bot >> https://niconicosette.github.io/discobots/alice-twitter
