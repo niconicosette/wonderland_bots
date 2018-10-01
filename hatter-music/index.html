@@ -10,41 +10,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="mush.png" />
     <style>
-      body { margin:0; padding:0; color:#2A375C; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+      body { margin:0; padding:0; color:#bbb; background:#28232B; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
       #main { position:absolute; width:380px; top:350px; left:calc(50% - 192px); margin-bottom:30px; line-height:11px; }
-      #main2 { width:100%; border:1px solid #38456B; overflow:hidden; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
-      .b1, .b2, .b3, .b4, .b5, .b6 { display:block; float:left; padding:10px 10px; overflow:hidden; font-size:12px !important; letter-spacing:1px !important; font-family:arial !important; border-bottom:1px solid #38456B; cursor:default; }
-      .b1, .b3, .b5 { width:calc(33% - 21px); background:#CFD4E3; border-right:1px solid #38456B; font-weight:600; }
-      .b2, .b4, .b6 { width:calc(67% - 20px); background:#f7f7f7; }
+      #main2 { width:100%; border:1px solid #1A171C; overflow:hidden; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
+      .b1, .b2, .b3, .b4, .b5, .b6 { display:block; float:left; padding:10px 10px; overflow:hidden; font-size:12px !important; letter-spacing:1px !important; font-family:arial !important; border-bottom:1px solid #1A171C; cursor:default; }
+      .b1, .b3, .b5 { width:calc(33% - 21px); background:#362D38; border-right:1px solid #1A171C; font-weight:600; }
+      .b2, .b4, .b6 { width:calc(67% - 20px); background:#44434A; }
       .b3, .b4 { border-bottom:0px; }
-      .b5, .b6 { background:#F5CED9; }
-      #main #hatter { width:120px; position:absolute; margin:-175px 0px 0px 230px; z-index:2; }
-      #main #castle { width:300px; position:absolute; margin:-285px 0px 0px 20px; z-index:1; }
+      .b5, .b6 { background:#472C36; }
+      #main #hatter { width:120px; position:absolute; margin:-175px 0px 0px 240px; z-index:2; }
+      #main #castle { width:300px; position:absolute; margin:-285px 0px 0px 10px; z-index:1; }
       #main #mushwoom { width:30px; position:absolute; margin:-27px 0px 0px 324px; z-index:1; }
       #main #invisible { width:380px; height:250px; background:#000; opacity:0; position:absolute; margin:-250px 0px 0px 0px; z-index:3; }
-      a { text-decoration:none; font-weight:600; cursor:pointer; color:#2A375C; }
+      a { text-decoration:none; font-weight:600; cursor:pointer; color:#bbb; }
       @media only screen and (max-width: 600px) {
-      #main {top:280px;}
+        #main {top:280px;}
       }
       @media only screen and (max-width: 400px) {
-      #main { width:100%; left:0px; }
-      #main2 { -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; border-left:0px; border-right:0px; }
-      #main #invisible { width:100%; }
+        #main { width:100%; left:0px; }
+        #main2 { -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; border-left:0px; border-right:0px; }
+        #main #invisible { width:100%; }
       }
       @media only screen and (max-width: 380px) {
-      #main { width:100%; left:0px; top:266px; margin-bottom:30px; position:absolute; }
-      #main2 { -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; border-left:0px; border-right:0px; }
-      .b1, .b3, .b5 { width:calc(100% - 20px); border-right:0px; }
-      .b2, .b4, .b6 { width:calc(100% - 20px); }
-      .sh { display:none; }
-      .b3 { border-bottom:1px solid #38456B; }
-      #main #hatter { margin:-180px 0px 0px 180px; }
-      #main #mushwoom { margin:-27px 0px 0px 50px; }
-      #main #invisible { width:100%; }
+        #main { width:100%; left:0px; top:266px; margin-bottom:30px; position:absolute; }
+        #main2 { -webkit-border-radius: 0px; -moz-border-radius: 0px; border-radius: 0px; border-left:0px; border-right:0px; }
+        .b1, .b3, .b5 { width:calc(100% - 20px); border-right:0px; }
+        .b2, .b4, .b6 { width:calc(100% - 20px); }
+        .sh { display:none; }
+        .b3 { border-bottom:1px solid #1A171C; }
+        #main #hatter { margin:-180px 0px 0px 220px; }
+        #main #mushwoom { margin:-27px 0px 0px 50px; }
+        #main #invisible { width:100%; }
+      }
+      @media only screen and (max-width: 340px) {
+        #main #hatter { margin:-180px 0px 0px 190px; }
       }
       @media only screen and (max-height: 640px) {
-      #main { top:266px; margin-bottom:30px; }
-      #main #invisible { width:100%; }
+        #main { top:266px; margin-bottom:30px; }
+        #main #invisible { width:100%; }
       }
     </style>
   </head>
@@ -70,7 +73,7 @@
         <div class="b1">hat#help</div>
         <div class="b2">view his command guide</div>
         <div class="b1">hat#play ?</div>
-        <div class="b2">stream video or play local audio</div>
+        <div class="b2">stream youtube or local media</div>
         <div class="b1">hat#tracks</div>
         <div class="b2">view his local track list</div>
         <div class="b1">hat#np</div>
@@ -83,6 +86,8 @@
         <div class="b2">skip to next queue item</div>
         <div class="b1">hat#q ?</div>
         <div class="b2">add a track to the queue</div>
+        <div class="b1">hat#showq</div>
+        <div class="b2">show the queue</div>
         <div class="b1">hat#clearq</div>
         <div class="b2">clear the queue</div>
         <div class="b1">hat#dc</div>
