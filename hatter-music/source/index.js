@@ -75,6 +75,10 @@ var queueplaysong;
 var playlistchan;
 var deletie;
 var nobigembed;
+var posInt;
+var isNum;
+var hasDeci;
+var checklistlength;
 
 fs.readFile('playlist.txt', 'utf8', function(err, contents) {
   playlist = JSON.parse(contents);
@@ -240,6 +244,11 @@ client.on('message', msg => {
           }
           if (eF == 1) {
             eF = 0;
+            queuelist = [];
+            nqueuelist = [];
+            if (mee.voiceChannel) {
+              mee.voiceChannel.leave();
+            }
             playarray = playlist[numm].split("#HAT#PLAY#3#");
             if (playarray.length > 1) {
               if (playarray[1].startsWith("https://www.")) {
@@ -479,8 +488,8 @@ client.on('message', msg => {
     //hat#create [playlistname]
     else if (pocom.startsWith("hat#create ")) {
       newlistname = msg.content.slice(11);
-      if (/\s/g.test(newlistname)) {
-        embeddy("the playlist name cannot contain spaces",msg.channel);
+      if (/\s/g.test(newlistname) || newlistname.startsWith("http") || newlistname.length > 25) {
+        embeddy("the playlist name cannot contain spaces, links, and must be under 25 characters",msg.channel);
       }
       else {
         if (playlist.length == 0) {
@@ -664,6 +673,11 @@ client.on('message', msg => {
     //hat#rm;playlistname;tracknumber
     else if (pocom.startsWith("hat#rm;")) {
       addy = msg.content.split(";");
+
+      posInt = Number(addy[2]);
+      isNum = isNaN(posInt);
+      hasDeci = addy[2].includes(".");
+
       if (addy.length == 3) {
         if (listoflist.length == 0) {
           embeddy("there aren't any playlists",msg.channel);
@@ -677,12 +691,12 @@ client.on('message', msg => {
               break;
             }
           }
-          if (eF == 1 && addy[2] != 0 && addy[2] <= playlist[numm].length) {
+          checklistlength = playlist[numm].split("#HAT#PLAY#3#");
+          if (eF == 1 && isNum == false && hasDeci == false && addy[2] > 0 && posInt <= (checklistlength.length - 1 ) && checklistlength[posInt].length > 1) {
             deletie = playlist[numm].split("#HAT#PLAY#3#");
-            deletie.splice(addy[2], 1);
+            deletie.splice(posInt, 1);
             playlist.pop();
             playlist[numm] = deletie.join("#HAT#PLAY#3#");
-            console.log(playlist[numm]);
             a_string = "deleted track #" + addy[2];
             stringylist = JSON.stringify(playlist);
             fs.writeFile('playlist.txt', stringylist, function(err) { if (err){ console.log(err); } });
