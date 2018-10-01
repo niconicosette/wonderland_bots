@@ -1,12 +1,11 @@
-publicly available discord bots!
+available discord bots!
 
 name »» alice
-homepage »» https://niconicosette.github.io/discobots/alice-twitter
-install »» click the invite link
+homepage »» https://niconicosette.github.io/wonderland_bots/alice-twitter
+to install »» click the invite link on his homepage
 
 name »» hatter
-homepage »» https://niconicosette.github.io/discobots/hatter-music
-install »» build from source and host
+homepage »» https://niconicosette.github.io/wonderland_bots/hatter-music
+to install »» build from source and host
 
-for hatter you can use this heroku deploy tutorial:
-https://niconicosette.github.io/re/herokubot
+if you happen across a bug please open an issue
