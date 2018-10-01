@@ -87,7 +87,7 @@ fs.readFile('playlist.txt', 'utf8', function(err, contents) {
   }
   else {
     for (i = 0; i < playlist.length; i++) {
-      listcheck = playlist[i].split("#HAT#PLAY#3#");
+      listcheck = playlist[i].split("--:::-$$-:::--");
       listoflist += listcheck[0]+ "\n\n";
     }
   }
@@ -113,7 +113,7 @@ function embeddy(x,y) {
 
 client.on('message', msg => {
 
-  if (msg.content.includes("#") || msg.author.bot) {
+  if ((msg.content.includes("#") && !msg.content.includes("--:::-$$-:::--")) || msg.author.bot) {
     pocom = msg.content.toLowerCase();
     mee = msg.guild.me;
 
@@ -235,7 +235,7 @@ client.on('message', msg => {
         }
         else {
           for (i = 0; i < playlist.length; i++) {
-            listcheck = playlist[i].split("#HAT#PLAY#3#");
+            listcheck = playlist[i].split("--:::-$$-:::--");
             if (listcheck[0] == toplaylist) {
               eF = 1;
               numm = i;
@@ -249,7 +249,7 @@ client.on('message', msg => {
             if (mee.voiceChannel) {
               mee.voiceChannel.leave();
             }
-            playarray = playlist[numm].split("#HAT#PLAY#3#");
+            playarray = playlist[numm].split("--:::-$$-:::--");
             if (playarray.length > 1) {
               if (playarray[1].startsWith("https://www.")) {
                 nobigembed = playarray[1].slice(12);
@@ -493,7 +493,7 @@ client.on('message', msg => {
       }
       else {
         if (playlist.length == 0) {
-          playlist[0] = newlistname + "#HAT#PLAY#3#";
+          playlist[0] = newlistname + "--:::-$$-:::--";
           a_string = "created playlist: " + newlistname;
           listoflist += newlistname + "\n\n";
           stringylist = JSON.stringify(playlist);
@@ -502,7 +502,7 @@ client.on('message', msg => {
         }
         else {
           for (i = 0; i < playlist.length; i++) {
-            listcheck = playlist[i].split("#HAT#PLAY#3#");
+            listcheck = playlist[i].split("--:::-$$-:::--");
             if (listcheck[0] == newlistname) {
               eF = 1;
             }
@@ -512,7 +512,7 @@ client.on('message', msg => {
             embeddy("that list already exists",msg.channel);
           }
           else if (listoflist.length < 1900) {
-            playlist[playlist.length] = newlistname + "#HAT#PLAY#3#";
+            playlist[playlist.length] = newlistname + "--:::-$$-:::--";
             a_string = "created playlist: " + newlistname;
             listoflist += newlistname + "\n\n";
             stringylist = JSON.stringify(playlist);
@@ -534,7 +534,7 @@ client.on('message', msg => {
       }
       else {
         for (i = 0; i < playlist.length; i++) {
-          listcheck = playlist[i].split("#HAT#PLAY#3#");
+          listcheck = playlist[i].split("--:::-$$-:::--");
           if (listcheck[0] == newlistname) {
             eF = 1;
             playlist.splice(i, 1);
@@ -548,7 +548,7 @@ client.on('message', msg => {
           embeddy("deleted the list",msg.channel);
           listoflist = "";
           for (i = 0; i < playlist.length; i++) {
-            listcheck = playlist[i].split("#HAT#PLAY#3#");
+            listcheck = playlist[i].split("--:::-$$-:::--");
             listoflist += listcheck[0]+ "\n\n";
           }
         }
@@ -577,7 +577,7 @@ client.on('message', msg => {
       }
       else {
         for (i = 0; i < playlist.length; i++) {
-          listcheck = playlist[i].split("#HAT#PLAY#3#");
+          listcheck = playlist[i].split("--:::-$$-:::--");
           if (listcheck[0] == showlist) {
             numm = i;
             eF = 1;
@@ -585,7 +585,7 @@ client.on('message', msg => {
         }
         if (eF == 1) {
           eF = 0;
-          displaylist = playlist[numm].split("#HAT#PLAY#3#");
+          displaylist = playlist[numm].split("--:::-$$-:::--");
           displaylist2 = displaylist.join("\n\n");
           embeddy(displaylist2,msg.channel);
         }
@@ -604,7 +604,7 @@ client.on('message', msg => {
         }
         else {
           for (i = 0; i < playlist.length; i++) {
-            listcheck = playlist[i].split("#HAT#PLAY#3#");
+            listcheck = playlist[i].split("--:::-$$-:::--");
             if (listcheck[0] == addy[1]) {
               numm = i;
               eF = 1;
@@ -620,7 +620,7 @@ client.on('message', msg => {
               eF = 0;
               getInfo(addy[2]).then(info => {
                 //ytsongname = info.items[0].title;
-                playlist[numm] += addy[2] + "#HAT#PLAY#3#";
+                playlist[numm] += addy[2] + "--:::-$$-:::--";
                 a_string = "added " + addy[2] + " to " + addy[1];
                 stringylist = JSON.stringify(playlist);
                 fs.writeFile('playlist.txt', stringylist, function(err) {
@@ -640,7 +640,7 @@ client.on('message', msg => {
               eF = 0;
               audiopath = "./music/" + addy[2];
               if (checkFileExistsSync(audiopath)) {
-                playlist[numm] += addy[2] + "#HAT#PLAY#3#";
+                playlist[numm] += addy[2] + "--:::-$$-:::--";
                 a_string = "added " + addy[2] + " to " + addy[1];
                 stringylist = JSON.stringify(playlist);
                 fs.writeFile('playlist.txt', stringylist, function(err) {
@@ -684,19 +684,19 @@ client.on('message', msg => {
         }
         else {
           for (i = 0; i < playlist.length; i++) {
-            listcheck = playlist[i].split("#HAT#PLAY#3#");
+            listcheck = playlist[i].split("--:::-$$-:::--");
             if (listcheck[0] == addy[1]) {
               numm = i;
               eF = 1;
               break;
             }
           }
-          checklistlength = playlist[numm].split("#HAT#PLAY#3#");
+          checklistlength = playlist[numm].split("--:::-$$-:::--");
           if (eF == 1 && isNum == false && hasDeci == false && addy[2] > 0 && posInt <= (checklistlength.length - 1 ) && checklistlength[posInt].length > 1) {
-            deletie = playlist[numm].split("#HAT#PLAY#3#");
+            deletie = playlist[numm].split("--:::-$$-:::--");
             deletie.splice(posInt, 1);
             playlist.pop();
-            playlist[numm] = deletie.join("#HAT#PLAY#3#");
+            playlist[numm] = deletie.join("--:::-$$-:::--");
             a_string = "deleted track #" + addy[2];
             stringylist = JSON.stringify(playlist);
             fs.writeFile('playlist.txt', stringylist, function(err) { if (err){ console.log(err); } });
