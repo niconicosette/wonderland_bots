@@ -1,3 +1,5 @@
+🍄 🌷 🐰 🍵 🍭
+
 name »» alice
 homepage »» https://niconicosette.github.io/wonderland_bots/alice-twitter
 to install »» click the invite link on his homepage
