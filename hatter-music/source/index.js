@@ -134,7 +134,7 @@ client.on('message', msg => {
     //hat#np
     else if (pocom == "hat#np") {
       if (mee.voiceChannel && dispatcher.stream) {
-        if (audioname.includes("https://youtu") || audioname.includes("https://www.youtu")) {
+        if (audioname.includes("https://youtu") || audioname.includes("https://www.youtu") || audioname.includes("https://m.youtu") || audioname.includes("https://www.m.youtu")) {
           a_string = "now playing " + streamname;
           embeddy(a_string,msg.channel);
         }
@@ -301,7 +301,7 @@ client.on('message', msg => {
           audioname = msg.content.slice(49);
           voicie = playlistchan;
           client.user.lastMessage.delete();
-          if (audioname.startsWith("youtube.com")) {
+          if (audioname.startsWith("youtu") || audioname.startsWith("m.youtu")) {
             audioname = "https://" + audioname;
           }
         }
@@ -319,17 +319,17 @@ client.on('message', msg => {
           audioname = msg.content.slice(22);
           voicie = msg.member.voiceChannel;
           client.user.lastMessage.delete();
-          if (audioname.startsWith("youtube.com")) {
+          if (audioname.startsWith("youtu") || audioname.startsWith("m.youtu")) {
             audioname = "https://" + audioname;
           }
         }
         if (mee.voiceChannel) {
           voicie.leave();
         }
-        if (audioname.includes("http://youtu") || audioname.includes("http://www.youtu")) {
+        if (audioname.includes("http://")) {
           embeddy("please use https links, not http",msg.channel);
         }
-        else if (!audioname.includes("https://youtu") && !audioname.includes("https://www.youtu") && !audioname.includes("youtube.com")) {
+        else if (!audioname.includes("https://youtu") && !audioname.includes("https://www.youtu") && !audioname.includes("https://www.m.youtu") && !audioname.includes("https://m.youtu") && !audioname.includes("youtube.com")) {
           audiopath = "./music/" + audioname;
           if (checkFileExistsSync(audiopath)) {
             a_string = "playing " + audioname;
@@ -366,6 +366,14 @@ client.on('message', msg => {
                 nobigembed = queuelist[0].slice(12);
                 queuelist[0] = nobigembed;
               }
+              else if (queuelist[0].includes("https://m.youtu")) {
+                  nobigembed = queuelist[0].slice(10);
+                  queuelist[0] = nobigembed;
+                }
+                else if (queuelist[0].includes("https://www.m.youtu")) {
+                  nobigembed = queuelist[0].slice(14);
+                  queuelist[0] = nobigembed;
+                }
               msg.channel.send("loading from queue... " + queuelist[0]).catch(console.error);
               queuelist.shift();
               nqueuelist.shift();
@@ -375,7 +383,7 @@ client.on('message', msg => {
             }
           }
         }
-        else if (audioname.includes("https://youtu") || audioname.includes("https://www.youtu")) {
+        else if (audioname.includes("https://youtu") || audioname.includes("https://www.youtu") || audioname.includes("https://www.m.youtu") || audioname.includes("https://m.youtu")) {
           try {
             let url = audioname;
             stream = ytdl(url);
@@ -405,6 +413,14 @@ client.on('message', msg => {
                 }
                 else if (queuelist[0].includes("https://www.youtu")) {
                   nobigembed = queuelist[0].slice(12);
+                  queuelist[0] = nobigembed;
+                }
+                else if (queuelist[0].includes("https://m.youtu")) {
+                    nobigembed = queuelist[0].slice(10);
+                    queuelist[0] = nobigembed;
+                  }
+                else if (queuelist[0].includes("https://www.m.youtu")) {
+                  nobigembed = queuelist[0].slice(14);
                   queuelist[0] = nobigembed;
                 }
                 msg.channel.send("loading from queue... " + queuelist[0]).catch(console.error);
