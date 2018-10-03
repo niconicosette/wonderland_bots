@@ -4,9 +4,9 @@ https://github.com/niconicosette/wonderland_bots/raw/master/hatter-music/source.
 
 and deploy him to whichever vps or platform you prefer
 
-- - - - - - - 
-hatter's guide
-- - - - - - - 
+- - - - - - - - - - - -
+🍰  hatter's guide  🍭
+- - - - - - - - - - - -
 
 hat#help → view his help guide
 
